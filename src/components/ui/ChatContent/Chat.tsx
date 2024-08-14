@@ -91,7 +91,7 @@ const Chat = () => {
   return (
     <>
       <CardContent className=" max-h-[100vdh] max-sm:pt-40 max-sm:pb-32">
-        <div className="overflow-y-auto flex flex-col-reverse max-h-[500px]">
+        <div className="overflow-y-auto flex flex-col-reverse max-h-[500px] max-sm:max-h-full">
           <div className="space-y-4">
             {messages.map((message) => (
               <ChatMessage message={message} key={message.content} />
