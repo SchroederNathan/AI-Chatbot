@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Chat from "@/components/ui/Chat";
 import { ChatInput } from "@/components/ui/ChatInput";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,18 +20,12 @@ export default function Home() {
         <CardHeader className="relative">
           <CardTitle>Chat Bot</CardTitle>
           <CardDescription>
-            A simple chat bot using OpenAI's GPT-TBA model.
+            A simple chat bot using OpenAI's GPT-3.5 Turbo model.
           </CardDescription>
           <ModeToggle className="absolute right-6 top-4" />
         </CardHeader>
 
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <ChatInput />
-            </div>
-          </form>
-        </CardContent>
+        <Chat />
       </Card>
     </div>
   );
