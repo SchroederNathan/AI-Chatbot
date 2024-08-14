@@ -3,28 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { CardContent } from "../card";
 import { ChatInput } from "./ChatInput";
 import ChatMessage from "./ChatMessage";
-import { cn } from "@/lib/utils";
-
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-
-const LoadingSpinner = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={cn("animate-spin", className)}
-    >
-      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-    </svg>
-  );
-};
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -48,40 +26,27 @@ const Chat = () => {
     const newMessages = [...messages, newMessage];
     setMessages(newMessages);
 
-    // Proccess message to chatGPT (send to server and get response)
+    // Process message to chatGPT (send to server and get response)
     setIsTyping(true);
 
     await proccessMessageToChatGPT(newMessages);
   };
 
   async function proccessMessageToChatGPT(apiMessages: any) {
-    const systemMessage = {
-      role: "system",
-      content:
-        "Be very nice and helpful. You are a chatbot, but try to act human-like. The owner of this website is Nate. And his software development portfolio is nathanschroeder.dev. You don't have to mention it, but if it is asked about, you can say it.",
-    };
-
-    const apiBodyRequest = {
-      model: "gpt-3.5-turbo",
-      messages: [systemMessage, ...apiMessages],
-    };
-
-    await fetch("https://api.openai.com/v1/chat/completions", {
+    await fetch("/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
       },
-      body: JSON.stringify(apiBodyRequest),
+      body: JSON.stringify({ messages: apiMessages }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.choices[0].message.content);
         setMessages([
           ...apiMessages,
           {
             role: "assistant",
-            content: data.choices[0].message.content,
+            content: data.message,
           },
         ]);
         setIsTyping(false);
