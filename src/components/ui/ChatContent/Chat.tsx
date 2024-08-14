@@ -32,7 +32,7 @@ const Chat = () => {
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
-  
+
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   // Effect to scroll to the bottom of chat messages
@@ -91,7 +91,7 @@ const Chat = () => {
   return (
     <>
       <CardContent className=" max-h-[100vdh] max-sm:pt-40 max-sm:pb-32">
-        <div className="overflow-y-auto flex flex-col-reverse ">
+        <div className="overflow-y-auto flex flex-col-reverse max-h-[500px]">
           <div className="space-y-4">
             {messages.map((message) => (
               <ChatMessage message={message} key={message.content} />
