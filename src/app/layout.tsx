@@ -7,9 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "AI Chatbot - Nathan Schroeder",
-  description: "A simple chat bot using OpenAI's GPT-3.5 Turbo model.
-
-",
+  description: "A simple chat bot using OpenAI's GPT-3.5 Turbo model.",
 };
 
 export default function RootLayout({
