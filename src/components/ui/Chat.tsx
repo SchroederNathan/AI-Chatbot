@@ -2,6 +2,7 @@
 import React, { use, useEffect, useState } from "react";
 import { CardContent } from "./card";
 import { ChatInput } from "./ChatInput";
+import ChatMessage from "./ChatMessage";
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -10,6 +11,8 @@ const Chat = () => {
 
   const handleSubmit = (message: string) => {
     setMessages([...messages, { sender: "user", content: message }]);
+
+    // Proccess message to chatGPT (send to server and get response)
   };
 
   useEffect(() => {
@@ -18,8 +21,10 @@ const Chat = () => {
 
   return (
     <>
-      <CardContent>
-        These will be the messages to and from the server.
+      <CardContent className="space-y-4">
+        {messages.map((message) => (
+          <ChatMessage message={message} />
+        ))}
       </CardContent>
       <CardContent>
         <form>
