@@ -14,11 +14,15 @@ export function ChatInput({
   // This is a server component, so we'll need to fetch the message from the server.
 
   const [message, setMessage] = useState("");
+  const [chatProgress, setChatProgress] = useState<string>(
+    window.localStorage.getItem("limitProgress")!
+  );
 
   const handleClick = (event: any) => {
     event.preventDefault();
     onSubmit(message);
     setMessage("");
+    setChatProgress(window.localStorage.getItem("limitProgress")!);
   };
 
   return (
@@ -30,9 +34,15 @@ export function ChatInput({
         className="text-base"
         onChange={(e) => setMessage(e.target.value)}
       />
-      <Button type="submit" onClick={(event) => handleClick(event)}>
-        <PaperPlaneIcon style={{ transform: "rotate(-45git deg)" }} />
-      </Button>
+      {chatProgress !== "10" ? (
+        <Button type="submit" onClick={(event) => handleClick(event)}>
+          <PaperPlaneIcon style={{ transform: "rotate(-45git deg)" }} />
+        </Button>
+      ) : (
+        <Button type="submit" className="invert" onClick={(event) => handleClick(event)}>
+          <PaperPlaneIcon style={{ transform: "rotate(-45git deg)" }} />
+        </Button>
+      )}
     </div>
   );
 }

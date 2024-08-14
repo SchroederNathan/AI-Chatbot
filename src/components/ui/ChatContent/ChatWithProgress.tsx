@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import LimitProgress from "./LimitProgress";
-import Chat from "./ChatContent/Chat";
-import { CardDescription, CardHeader, CardTitle } from "./card";
-import { ModeToggle } from "./ModeToggle";
+import Chat from "./Chat";
+import { CardDescription, CardHeader, CardTitle } from "../card";
+import { ModeToggle } from "../ModeToggle";
+import LimitProgress from "@/components/ChatLimiter/LimitProgress";
+import LimitAlert from "@/components/ChatLimiter/LimitAlert";
 
 const ChatWithProgress = () => {
   const [chatCount, setChatCount] = useState<number>(0);
+  const [showLimitAlert, setShowLimitAlert] = useState<boolean>(false);
 
   useEffect(() => {
     const storedChatCount = window.localStorage.getItem("limitProgress");
@@ -20,6 +22,8 @@ const ChatWithProgress = () => {
       const newCount = chatCount + 1;
       setChatCount(newCount);
       window.localStorage.setItem("limitProgress", newCount.toString());
+    } else {
+      setShowLimitAlert(true);
     }
   };
 
@@ -34,6 +38,7 @@ const ChatWithProgress = () => {
         <ModeToggle className="absolute right-6 top-4" />
       </CardHeader>
       <Chat onChat={incrementChatCount} />
+      {showLimitAlert && <LimitAlert />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Progress } from "./progress";
+import { Progress } from "../ui/progress";
 
 const LimitProgress = ({ chatCount }: { chatCount: number }) => {
   const progress = (chatCount / 10) * 100;

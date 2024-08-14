@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import ChatWithProgress from "@/components/ui/ChatWithProgress";
+import ChatWithProgress from "@/components/ui/ChatContent/ChatWithProgress";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 
 export default function Home() {

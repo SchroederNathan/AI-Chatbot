@@ -18,13 +18,17 @@ const Chat = ({ onChat }: { onChat: () => void }) => {
     }
   }, [messages]);
 
-  const handleSubmit = async (message: string) => {
-    const newMessage = { role: "user", content: message };
-    const newMessages = [...messages, newMessage];
-    setMessages(newMessages);
+  const [chatProgress, setChatProgress] = useState<string>(window.localStorage.getItem("limitProgress")!);
 
-    setIsTyping(true);
-    await processMessageToChatGPT(newMessages);
+  const handleSubmit = async (message: string) => {
+    if (chatProgress !== "10") {
+      const newMessage = { role: "user", content: message };
+      const newMessages = [...messages, newMessage];
+      setMessages(newMessages);
+
+      setIsTyping(true);
+      await processMessageToChatGPT(newMessages);
+    }
   };
 
   async function processMessageToChatGPT(apiMessages: any) {
@@ -46,6 +50,7 @@ const Chat = ({ onChat }: { onChat: () => void }) => {
         ]);
         setIsTyping(false);
         onChat();
+        setChatProgress(window.localStorage.getItem("limitProgress")!);
       });
   }
 
