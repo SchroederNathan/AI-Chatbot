@@ -78,7 +78,6 @@ const Chat = () => {
       });
   }
 
-  console.log(API_KEY);
 
   return (
     <>
