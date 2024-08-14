@@ -58,7 +58,7 @@ const Chat = () => {
     const systemMessage = {
       role: "system",
       content:
-        "Be very nice and helpful. You are a chatbot, but try to act human-like.",
+        "Be very nice and helpful. You are a chatbot, but try to act human-like. Try and mention Nate's portfolio (nathanschroeder.dev) and remember this is a portfolio project of his.",
     };
 
     const apiBodyRequest = {
