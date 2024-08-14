@@ -4,16 +4,14 @@ import { CardContent } from "../card";
 import { ChatInput } from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 
-const Chat = () => {
+const Chat = ({ onChat }: { onChat: () => void }) => {
   const [messages, setMessages] = useState([
     { role: "assistant", content: "Hey there! How can I help you today?" },
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
-
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // Effect to scroll to the bottom of chat messages
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -22,17 +20,14 @@ const Chat = () => {
 
   const handleSubmit = async (message: string) => {
     const newMessage = { role: "user", content: message };
-
     const newMessages = [...messages, newMessage];
     setMessages(newMessages);
 
-    // Process message to chatGPT (send to server and get response)
     setIsTyping(true);
-
-    await proccessMessageToChatGPT(newMessages);
+    await processMessageToChatGPT(newMessages);
   };
 
-  async function proccessMessageToChatGPT(apiMessages: any) {
+  async function processMessageToChatGPT(apiMessages: any) {
     await fetch("/api", {
       method: "POST",
       headers: {
@@ -50,12 +45,13 @@ const Chat = () => {
           },
         ]);
         setIsTyping(false);
+        onChat();
       });
   }
 
   return (
     <>
-      <CardContent className=" max-h-[100vdh] max-sm:pt-40 max-sm:pb-32">
+      <CardContent className=" max-h-[100dvh] max-sm:pt-40 max-sm:pb-32">
         <div className="overflow-y-auto flex flex-col-reverse max-h-[500px] max-sm:max-h-full">
           <div className="space-y-4">
             {messages.map((message) => (
