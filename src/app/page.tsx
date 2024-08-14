@@ -9,8 +9,8 @@ import { ModeToggle } from "@/components/ui/ModeToggle";
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="w-[500px] relative">
+    <div className="flex justify-center items-center h-screen ">
+      <Card className="w-[500px] relative border max-sm:border-none max-sm:flex-1 max-sm:h-full">
         <CardHeader className="relative">
           <CardTitle>Chat Bot</CardTitle>
           <CardDescription>

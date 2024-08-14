@@ -78,7 +78,6 @@ const Chat = () => {
       });
   }
 
-
   return (
     <>
       <CardContent className="space-y-4">
@@ -94,7 +93,7 @@ const Chat = () => {
         ) : null}
       </CardContent>
 
-      <CardContent>
+      <CardContent className="max-sm:absolute max-sm:bottom-0 max-sm:left-0 max-sm:right-0">
         <form>
           <div className="grid w-full items-center gap-4">
             <ChatInput onSubmit={handleSubmit} />
