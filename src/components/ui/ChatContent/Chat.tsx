@@ -1,12 +1,12 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CardContent } from "../card";
 import { ChatInput } from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "../scroll-area";
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const API_KEY = process.env.API_KEY || process.env.NEXT_PUBLIC_API_KEY;
+
 const LoadingSpinner = ({ className }: { className?: string }) => {
   return (
     <svg
@@ -82,7 +82,7 @@ const Chat = () => {
     <>
       <CardContent className="space-y-4">
         {messages.map((message) => (
-          <ChatMessage message={message} isTyping={isTyping} />
+          <ChatMessage message={message} key={message.content} isTyping={isTyping} />
         ))}
         {isTyping ? (
           <div className="flex gap-1">
