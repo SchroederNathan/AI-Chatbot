@@ -5,7 +5,7 @@ import { ChatInput } from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 import { cn } from "@/lib/utils";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const LoadingSpinner = ({ className }: { className?: string }) => {
   return (
@@ -78,7 +78,7 @@ const Chat = () => {
       });
   }
 
-  console.log(API_KEY)
+  console.log(API_KEY);
 
   return (
     <>
