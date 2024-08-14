@@ -82,7 +82,7 @@ const Chat = () => {
     <>
       <CardContent className="space-y-4">
         {messages.map((message) => (
-          <ChatMessage message={message} key={message.content} isTyping={isTyping} />
+          <ChatMessage message={message} key={message.content} />
         ))}
         {isTyping ? (
           <div className="flex gap-1">
