@@ -78,6 +78,8 @@ const Chat = () => {
       });
   }
 
+  console.log(API_KEY)
+
   return (
     <>
       <CardContent className="space-y-4">
