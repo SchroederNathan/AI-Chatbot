@@ -27,6 +27,7 @@ export function ChatInput({
         type="text"
         placeholder="Ask me anything"
         value={message}
+        className="text-base"
         onChange={(e) => setMessage(e.target.value)}
       />
       <Button type="submit" onClick={(event) => handleClick(event)}>
