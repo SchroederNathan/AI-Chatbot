@@ -14,7 +14,7 @@ export default function Home() {
         <CardHeader className="relative">
           <CardTitle>Chat Bot</CardTitle>
           <CardDescription>
-            A simple chat bot using OpenAI's GPT-3.5 Turbo model.
+            A simple chat bot using OpenAI&apos;s GPT-3.5 Turbo model.
           </CardDescription>
           <ModeToggle className="absolute right-6 top-4" />
         </CardHeader>
