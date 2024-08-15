@@ -6,7 +6,9 @@ import ChatMessage from "./ChatMessage";
 
 const Chat = ({ onChat }: { onChat: () => void }) => {
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Hey there! How can I help you today?" },
+    { role: "assistant", content: `
+
+` },
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
