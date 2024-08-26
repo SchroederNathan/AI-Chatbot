@@ -10,7 +10,7 @@ Feel free to use this as a template for your next AI Chatbot website!
 
 **For local development, create a new file in the root directory named '.env.local' and add the following:**
 ```env
-NEXT_PUBLIC_API_KEY=your_gpt_api_key
+OPENAI_API_KEY=your_gpt_api_key
 ```
 
 For deploying, just use your GPT api key as an enviroment variable
